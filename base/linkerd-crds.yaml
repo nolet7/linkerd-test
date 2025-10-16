@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: linkerd-prod
+  name: linkerd-crds
   namespace: argocd
 spec:
   project: platform-tools
   source:
-    repoURL: https://github.com/nolet7/linkerd-test.git
-    path: overlays/prod
-    targetRevision: main
+    repoURL: https://helm.linkerd.io/stable
+    chart: linkerd-crds
+    targetRevision: 1.6.0
   destination:
     server: https://kubernetes.default.svc
     namespace: linkerd

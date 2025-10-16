@@ -4,10 +4,10 @@ metadata:
   name: platform-tools
   namespace: argocd
 spec:
-  description: Platform tools including Linkerd service mesh
+  description: Linkerd platform deployment project
   sourceRepos:
     - https://github.com/nolet7/linkerd-test.git
-    - https://github.com/nolet7/helm.git
+    - https://helm.linkerd.io/stable
   destinations:
     - namespace: linkerd
       server: https://kubernetes.default.svc

@@ -6,12 +6,9 @@ metadata:
 spec:
   project: platform-tools
   source:
-    repoURL: https://helm.linkerd.io/stable
-    chart: linkerd-control-plane
-    targetRevision: 1.16.0
-    helm:
-      valueFiles:
-        - https://raw.githubusercontent.com/nolet7/helm/main/values/values-stage.yaml
+    repoURL: https://github.com/nolet7/linkerd-test.git
+    path: overlays/stage
+    targetRevision: main
   destination:
     server: https://kubernetes.default.svc
     namespace: linkerd

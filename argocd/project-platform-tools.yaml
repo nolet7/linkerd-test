@@ -4,9 +4,9 @@ metadata:
   name: platform-tools
   namespace: argocd
 spec:
-  description: "Linkerd Deployment via Argo CD"
+  description: Platform tools including Linkerd service mesh
   sourceRepos:
-    - https://helm.linkerd.io/stable
+    - https://github.com/nolet7/linkerd-test.git
     - https://github.com/nolet7/helm.git
   destinations:
     - namespace: linkerd

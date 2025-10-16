@@ -1,17 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: linkerd-dev
+  name: linkerd-crds
   namespace: argocd
 spec:
   project: platform-tools
   source:
     repoURL: https://helm.linkerd.io/stable
-    chart: linkerd-control-plane
+    chart: linkerd-crds
     targetRevision: 1.12.0
-    helm:
-      valueFiles:
-        - https://raw.githubusercontent.com/nolet7/helm/main/values/values-dev.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: linkerd

@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: linkerd-crds
-  namespace: linkerd
-data:
-  crds: "true"

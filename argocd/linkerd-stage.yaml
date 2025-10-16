@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: linkerd-stage
+  namespace: argocd
+  labels:
+    env: stage
+spec:
+  project: platform-tools
+  sources:
+    - repoURL: 'https://github.com/nolet7/helm.git'
+      targetRevision: main
+      ref: values
+    - repoURL: 'https://helm.linkerd.io/stable'
+      chart: linkerd-control-plane
+      targetRevision: "1.16.10"
+      helm:
+        releaseName: linkerd
+        valueFiles:
+          - $values/values/values-stage.yaml
+  destination:
+    namespace: linkerd-stage
+    name: in-cluster
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true

@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: platform-tools
+  namespace: argocd
+spec:
+  description: "Platform tools including Linkerd and supporting infrastructure"
+  sourceRepos:
+    - '*'
+  destinations:
+    - namespace: '*'
+      server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'

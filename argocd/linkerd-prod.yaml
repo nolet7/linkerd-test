@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: linkerd-prod
+  namespace: argocd
+  labels:
+    env: prod
+spec:
+  project: platform-tools
+  sources:
+    - repoURL: 'https://github.com/nolet7/helm.git'
+      targetRevision: main
+      ref: values
+    - repoURL: 'https://helm.linkerd.io/stable'
+      chart: linkerd-control-plane
+      targetRevision: "1.16.10"
+      helm:
+        releaseName: linkerd
+        valueFiles:
+          - $values/values/values-prod.yaml
+  destination:
+    namespace: linkerd
+    name: in-cluster
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true

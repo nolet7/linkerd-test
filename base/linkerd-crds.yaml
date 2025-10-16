@@ -1,18 +1,7 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
+apiVersion: v1
+kind: ConfigMap
 metadata:
   name: linkerd-crds
-  namespace: argocd
-spec:
-  project: platform-tools
-  source:
-    repoURL: 'https://helm.linkerd.io/stable'
-    chart: linkerd-crds
-    targetRevision: "1.16.10"
-  destination:
-    namespace: linkerd
-    name: in-cluster
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+  namespace: linkerd
+data:
+  crds: "true"

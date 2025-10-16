@@ -4,12 +4,12 @@ metadata:
   name: platform-tools
   namespace: argocd
 spec:
-  description: "Platform tools including Linkerd and supporting infrastructure"
+  description: "Service Mesh & Platform Tools Project"
   sourceRepos:
-    - '*'
+  - 'https://github.com/nolet7/helm.git'
   destinations:
-    - namespace: '*'
-      server: https://kubernetes.default.svc
+  - namespace: linkerd
+    server: https://kubernetes.default.svc
   clusterResourceWhitelist:
-    - group: '*'
-      kind: '*'
+  - group: '*'
+    kind: '*'
